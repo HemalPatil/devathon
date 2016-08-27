@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2016 at 11:24 AM
+-- Generation Time: Aug 27, 2016 at 11:42 AM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -44,7 +44,6 @@ CREATE TABLE `conferences` (
 
 CREATE TABLE `content` (
   `content_id` int(10) NOT NULL,
-  `page_id` int(10) DEFAULT NULL,
   `title` varchar(100) NOT NULL,
   `content_filename` varchar(100) NOT NULL,
   `last_edited_by` int(10) NOT NULL,
@@ -110,6 +109,17 @@ CREATE TABLE `pages` (
   `description` text NOT NULL,
   `last_edited_by` int(10) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pages_contents`
+--
+
+CREATE TABLE `pages_contents` (
+  `content_id` int(10) NOT NULL,
+  `page_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

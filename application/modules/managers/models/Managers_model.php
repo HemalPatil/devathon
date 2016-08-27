@@ -22,7 +22,19 @@ class Managers_model extends CI_Model
 
 	function get_approved_papers()
 	{
-		$approved_papers= $this
+		$approved_papers= $this->db->query("SELECT * FROM papers WHERE approved=1");
+		return $approved_papers->result_array();
+	}
+	function get_unapproved_papers()
+	{
+		$unapproved_papers = $this->db->query("SELECT * FROM papers WHERE approved!=1");
+		return $unapproved_papers->result_array();
+	}
+
+	function add_page($page)
+	{
+		$this->db->insert('pages', $page);
+		return true;
 	}
 }
 ?>

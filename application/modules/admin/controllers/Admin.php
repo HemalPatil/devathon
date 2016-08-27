@@ -31,6 +31,7 @@ class Admin extends MX_Controller
 		if(!$this->input->post('conference_url')){return false;}
 		if(!$this->input->post('conference_start')){return false;}
 		if(!$this->input->post('conference_end')){return false;}
+		return true;
 	}
 
 	function add_conference()

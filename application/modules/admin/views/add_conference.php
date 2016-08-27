@@ -40,6 +40,21 @@
 		</form>
 	</div>
 </div>
+<?php if(isset($conference_added)){ ?>
+<div class="modal center" id="added_banner">
+	<div class="modal-content">
+		<div class="row center">
+			<h5>Conference <?php if(!$conference_added){echo 'not ';} ?>added</h5>
+		</div>
+		<div class="row center">
+			<a href="<?php echo base_url('/admin/modify_conference'); ?>" class="btn">Assign Managers</a>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$("#added_banner").openModal();
+</script>
+<?php } ?>
 <script type="text/javascript">
 	function checkDates()
 	{

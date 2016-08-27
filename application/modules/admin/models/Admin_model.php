@@ -37,11 +37,6 @@ class Admin_model extends CI_Model
 		return $papers->result_array();
 	}
 
-	function get_userdata($id)
-	{
-		return $this->db->query("SELECT * FROM users WHERE id=$id")->row_array();
-	}
-
 	function get_all_papers()
 	{
 		$all_papers = $this->db->query("SELECT * FROM papers");
@@ -95,6 +90,23 @@ class Admin_model extends CI_Model
 		if($this->input->post('conference_url')) {return false;}
 		if($this->input->post('conference_start')) {return false;}
 		if($this->input->post('conference_end')) {return false;}
+	}
+
+	function create_single_user($array)
+	{    
+		$this->load->model('auth/ion_auth_model');
+		$this->load->helper('string');
+		
+		$data['first_name']=$array['first_name'];
+		$data['last_name']=$array['last_name'];
+		$identity=$array['email'];
+		$data['active']=1;
+
+		$email=$array['email'];
+		$password = $array['first_name'].$array['last_name'];
+		$userid=$this->ion_auth->register($identity,$password,$email,$data,array('4'));
+		//$userid = $this->ion_auth->register('yk', 'wsdcnitw', 'abc@xyz.com', array('first_name'=>'Y', 'last_name'=>'K'), array('4'));
+		return $userid;
 	}
 }
 ?>

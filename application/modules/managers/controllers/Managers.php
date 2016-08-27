@@ -4,7 +4,8 @@ class Managers extends MX_Controller
 {
 	function __construct()
 	{
-		parent::__construct(); 
+		parent::__construct();
+		$this->load->model('users/users_model');
 		$this->load->model('managers_model');
 		$this->load->helper('date');
 		$this->load->library('auth/ion_auth');
@@ -17,7 +18,7 @@ class Managers extends MX_Controller
 
 	function render_page($page, $data)
 	{
-		$data['user'] = $this->managers_model->get_userdata($this->ion_auth->user()->row()->id);
+		$data['user'] = $this->users_model->get_userdata($this->ion_auth->user()->row()->id);
 		$this->load->view('managers_dash', $data);
 		$this->load->view($page, $data);
 		$this->load->view('footer', $data);

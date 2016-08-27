@@ -25,11 +25,6 @@ class Managers_model extends CI_Model
 		$approved_papers= $this->db->query("SELECT * FROM papers WHERE approved=1");
 		return $approved_papers->result_array();
 	}
-	function get_unapproved_papers()
-	{
-		$unapproved_papers = $this->db->query("SELECT * FROM papers WHERE approved!=1");
-		return $unapproved_papers->result_array();
-	}
 
 	function add_page($page)
 	{

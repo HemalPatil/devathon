@@ -6,8 +6,17 @@ class Admin extends MX_Controller
 	{
 		parent::__construct(); 
 		$this->load->model('admin_model');
+		$this->load->model('users/users_model');
 		$this->load->helper('date');
 		$this->load->library('auth/ion_auth');
+		if(!$this->ion_auth->logged_in())
+		{
+			redirect('/auth/login/','refresh');
+		}
+		if(!$this->ion_auth->in_group('admin'))
+		{
+			redirect('/users','refresh');
+		}
 	}
 
 	function index()
@@ -19,7 +28,7 @@ class Admin extends MX_Controller
 	function render_page($page, $data)
 	{
 		$id = $this->ion_auth->user()->row()->id;
-		$data['user'] = $this->admin_model->get_userdata($id);
+		$data['user'] = $this->users_model->get_userdata($id);
 		$this->load->view('admin_dash', $data);
 		$this->load->view($page, $data);
 		$this->load->view('footer', $data);
@@ -93,6 +102,21 @@ class Admin extends MX_Controller
 		$data['users'] = $this->admin_model->get_all_users();
 		$data['managers'] = $this->admin_model->get_managers($this->input->post('modify_id'));
 		$this->render_page('modify_conference', $data);
+	}
+
+	function create_user()
+	{
+		$data=array();
+		$this->render_page('create_user',$data);
+	}
+	function create_user_stat()
+	{
+		$data['first_name']=$this->input->post('first_name');
+		$data['last_name']=$this->input->post('last_name');
+		$data['email']=$this->input->post('email');
+		$data['mobile']=$this->input->post('mobile');
+		$id = $this->admin_model->create_single_user($data);
+		echo 'User created'.$id.'done';
 	}
 
 	function lolz()

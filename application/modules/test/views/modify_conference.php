@@ -121,8 +121,10 @@
 						</div>
 					</form>
 					<p align="center">MANAGERS</p>
-					<input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
-					<label for="filled-in-box">Filled in</label>
+					<div class="col m6 l6 s6"style="margin-left: 10%">
+						<input type="checkbox" class="filled-in" id="filled-in-box" />
+						<label for="filled-in-box">Manager1</label>
+					</div>
 				</section>
 			</div>
 		</div>

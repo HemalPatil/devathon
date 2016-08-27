@@ -101,52 +101,46 @@
 					<div class="container">
 						<div class="row">
 						<div class="row">
-         <form class="col s12">
+         <form class="col s12" action="papertest" method ="post">
+         <h3 style="text-align:center;color:blue;"><u>ADD CONFERENCE FORM</u></h3>
          <div class="row"></div>
          <div class="row"></div>
             <div class="row">
                <div class="input-field col s10 l6 m8 offset-l2 offest-m2">
                  
-                  <input id="paper_title" name="paper_title" type="text" class="active validate" required>
+                  <input id="paper_title" name="paper_title" type="text" class="active validate" required maxlength="100">
                   <label for="paper_title">Title</label>
                </div>
 
             </div>
+            <div class="row">
+               <div class="input-field col s10 l6 m8 offset-l2 offest-m2">
+                 
+                  <input id="url" name="url" type="text" class="active validate" required maxlength="100">
+                  <label for="url">URL SITES:</label>
+               </div>
+
+            </div>
       
-            <div class="row ">
-               <div class="input-field col s10 l6 m8 offset-l2 offset-m2">
+            <div class="row " >
+               <div class="input-field col s10 l6 m8 offset-l2 offset-m2 " >
 			      <i class="material-icons prefix">mode_edit</i>
-                  <textarea id="paper_description" name="paper_description" class="materialize-textarea centered"></textarea>
+                  <textarea id="paper_description" name="paper_description" class="materialize-textarea centered" ></textarea>
                   <label for="paper_description">DESCRIPTION</label>
                </div>
-            </div>			   
-         </form> 
-        </div>
-       <div class="row">
-       </div>
-       <div class="row">
-       </div>
-       <div class="row">
-       </div>
-          <form action="#">
-          <div class="row"></div>
-    <div class="col file-field input-field s10 l6 m8 offset-l2 offest-m2">
-      <div class="btn blue" name="files">
-        <span>File</span>
-        <input type="file">
-      </div>
-      <div class="file-path-wrapper ">
-        <input class="file-path validate" type="text">
-      </div>
-    </div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row center"></div>
-    <button class="btn waves-effect waves-light blue right" type="submit" name="action" >Submit
-    <i class="material-icons right offset-l10">send</i>
-  </button>
+            </div>	
 
-  </form>
+            
+            </div>	
+            <div class="row right"></div>
+    <button class="btn waves-effect waves-light blue" type="submit" name="action" >Submit
+    <i class="material-icons right offset-l10">send</i>
+  </button>	   
+         </form> 
+       
+    
+    
+ 
 
 
 							

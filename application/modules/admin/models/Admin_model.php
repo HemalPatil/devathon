@@ -27,7 +27,7 @@ class Admin_model extends CI_Model
 
 	function get_userdata()
 	{
-		$id=$this->ionauth->user()->row()->id;
+		$id=$this->ion_auth->user()->row()->id;
 		$userdata = $this->db->query("SELECT * FROM users WHERE id=$id");
 	}
 	

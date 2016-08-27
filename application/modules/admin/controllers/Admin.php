@@ -13,6 +13,7 @@ class Admin extends MX_Controller
 	function index()
 	{
 		//TODO : make some home page
+		$this->add_conference();
 	}
 
 	function render_page($page, $data)
@@ -34,10 +35,39 @@ class Admin extends MX_Controller
 
 	function add_conference()
 	{
+		$data = array();
 		if($this->check_conference_input())
 		{
-			$this->session->set_flashdata()
+			$this->session->set_flashdata('conference_added', $this->admin_model->add_conference());
+			redirect('admin/add_conference');
 		}
+		if(null !== $this->session->flashdata('conference_added'))
+		{
+			$data['conference_added'] = $this->session->flashdata('conference_added');
+		}
+		$this->render_page('add_conference', $data);
+	}
+
+	function check_modify_conference_input()
+	{
+		if(!$this->check_conference_input()){return false;}
+		if(!$this->input->post('managers_list')){return false;}
+		if(!$this->input->post('pages_list')){return false;}
+	}
+
+	function modify_conference()
+	{
+		$data = array();
+		if($this->check_modify_conference_input())
+		{
+			$this->session->set_flashdata('conference_modified', $this->admin_model->_conference());
+			redirect('admin/all_conferences');
+		}
+		if(null !== $this->session->flashdata('conference_modified'))
+		{
+			$data['conference_modified'] = $this->session->flashdata('conference_modified');
+		}
+		$this->render_page('modify_conference', $data);
 	}
 }
 ?>

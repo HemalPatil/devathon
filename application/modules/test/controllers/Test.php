@@ -12,7 +12,13 @@ class Test extends MX_Controller
 
 	function index()
 	{
-		$this->load->view('conference2.php');
+		$this->load->view('conference.php');
+		$this->load->view('view1');
+	}
+
+	function f1()
+	{
+		echo 'Hello WSDC';
 	}
 }
 ?>

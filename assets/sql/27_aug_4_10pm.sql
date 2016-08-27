@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2016 at 12:24 PM
+-- Generation Time: Aug 27, 2016 at 12:38 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -135,6 +135,7 @@ CREATE TABLE `papers` (
   `title` varchar(100) NOT NULL,
   `description` text NOT NULL,
   `filename` varchar(50) NOT NULL,
+  `approved` int(1) NOT NULL COMMENT '1=approved 0=pending 2=rejected',
   `submittedby` int(10) NOT NULL,
   `approvedby` int(10) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP

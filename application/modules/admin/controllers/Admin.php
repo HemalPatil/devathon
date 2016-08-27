@@ -31,6 +31,7 @@ class Admin extends MX_Controller
 		if(!$this->input->post('conference_url')){return false;}
 		if(!$this->input->post('conference_start')){return false;}
 		if(!$this->input->post('conference_end')){return false;}
+		if(!$this->input->post('conference_managers')){return false;}
 		return true;
 	}
 
@@ -39,13 +40,23 @@ class Admin extends MX_Controller
 		$data = array();
 		if($this->check_conference_input())
 		{
-			$this->session->set_flashdata('conference_added', $this->admin_model->add_conference());
+			$success = $this->admin_model->add_conference();
+			$this->session->set_flashdata('conference_added', $success[0]);
+			if($success[0])
+			{
+				$this->session->set_flashdata('modify_id', $success[1]);
+			}
 			redirect('admin/add_conference');
 		}
 		if(null !== $this->session->flashdata('conference_added'))
 		{
 			$data['conference_added'] = $this->session->flashdata('conference_added');
 		}
+		if(null !== $this->session->flashdata('modify_id'))
+		{
+			$data['modify_id'] = $this->session->flashdata('modify_id');
+		}
+		$data['users'] = $this->admin_model->get_all_users();
 		$this->render_page('add_conference', $data);
 	}
 
@@ -54,11 +65,17 @@ class Admin extends MX_Controller
 		if(!$this->check_conference_input()){return false;}
 		if(!$this->input->post('managers_list')){return false;}
 		if(!$this->input->post('pages_list')){return false;}
+		if(!$this->input->post('modify_id')){return false;}
+		return true;
 	}
 
 	function modify_conference()
 	{
 		$data = array();
+		if(!$this->input->post('modify_id'))
+		{
+			redirect('admin/all_conferences');
+		}
 		if($this->check_modify_conference_input())
 		{
 			$this->session->set_flashdata('conference_modified', $this->admin_model->_conference());
@@ -68,7 +85,16 @@ class Admin extends MX_Controller
 		{
 			$data['conference_modified'] = $this->session->flashdata('conference_modified');
 		}
+		$data['conference'] = $this->admin_model->get_conference($this->input->post('modify_id'));
+		$data['users'] = $this->admin_model->get_all_users();
+		$data['managers'] = $this->admin_model->get_managers($this->input->post('modify_id'));
 		$this->render_page('modify_conference', $data);
+	}
+
+	function lolz()
+	{
+		$data = array();
+		$this->render_page('hello', $data);
 	}
 }
 ?>

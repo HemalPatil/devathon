@@ -13,9 +13,21 @@ class Admin_model extends CI_Model
 		return $all_conferences->result_array();
 	}
 
+	function get_all_users()
+	{
+		$q = "SELECT * FROM users ORDER BY first_name";
+		return $this->db->query($q)->result_array();
+	}
+
+	function get_conference($id)
+	{
+		$q = "SELECT * FROM conferences WHERE conference_id=$id";
+		return $this->db->query($q)->row_array();
+	}
+
 	function get_managers($conference_id)
 	{
-		$managers = $this->db->query("SELECT * FROM users WHERE id=(SELECT userid FROM managers_list WHERE conference_id=$conference_id)");
+		$managers = $this->db->query("SELECT * FROM users WHERE id IN (SELECT userid FROM managers_list WHERE conference_id=$conference_id)");
 		return $managers->result_array();
 	}
 
@@ -45,13 +57,28 @@ class Admin_model extends CI_Model
 		$conference['start_date']=date('Y-m-d', strtotime(str_replace('-', '/', $this->input->post('conference_start'))));
 		$conference['end_date']=date('Y-m-d', strtotime(str_replace('-', '/', $this->input->post('conference_end'))));
 		$conference['last_edited_by']=$this->ion_auth->user()->row()->id;
+		$managers = array();
+		$index = 0;
+		$manager_array = $this->input->post('conference_managers');
+		foreach($)
 		return $conference;
 	}
 
 	function add_conference()
 	{
-		$this->db->insert('conferences', $this->get_conference_input());
-		return true;
+		$conference = $this->get_conference_input();
+		$this->db->insert('conferences', $conference);
+		$link = $conference['urlname'];
+		$q = "SELECT * FROM conferences WHERE urlname='$link'";
+		$results = $this->db->query($q)->result_array();
+		if(count($results) === 1)
+		{
+			return array(0=>true,1=>$results[0]['conference_id']);
+		}
+		else
+		{
+			return array(0=>false);
+		}
 	}
 
 	function check_modify_conference_input()

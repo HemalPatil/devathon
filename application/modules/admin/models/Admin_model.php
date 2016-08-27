@@ -48,6 +48,11 @@ class Admin_model extends CI_Model
 		return $conference;
 	}
 
+	function get_conference($id){
+		$conference=$this->db->query("SELECT * FROM conferences where conference_id=$id");
+		return $conference->row_array();
+	}
+
 	function add_conference()
 	{
 		$this->db->insert('conferences', $this->get_conference_input());

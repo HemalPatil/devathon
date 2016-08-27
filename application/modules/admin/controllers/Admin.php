@@ -18,7 +18,8 @@ class Admin extends MX_Controller
 
 	function render_page($page, $data)
 	{
-		$data['user'] = $this->admin_model->get_userdata($this->ion_auth->user()->row()->id);
+		$id = $this->ion_auth->user()->row()->id;
+		$data['user'] = $this->admin_model->get_userdata($id);
 		$this->load->view('admin_dash', $data);
 		$this->load->view($page, $data);
 		$this->load->view('footer', $data);
@@ -40,6 +41,9 @@ class Admin extends MX_Controller
 		$data = array();
 		if($this->check_conference_input())
 		{
+			/*$s = $this->admin_model->get_conference_input();
+			print_r($s);
+			return;*/
 			$success = $this->admin_model->add_conference();
 			$this->session->set_flashdata('conference_added', $success[0]);
 			if($success[0])

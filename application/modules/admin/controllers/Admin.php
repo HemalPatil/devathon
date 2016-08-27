@@ -23,9 +23,21 @@ class Admin extends MX_Controller
 		$this->load->view('footer', $data);
 	}
 
+	function check_conference_input()
+	{
+		if(!$this->input->post('conference_title')){return false;}
+		if(!$this->input->post('conference_description')){return false;}
+		if(!$this->input->post('conference_url')){return false;}
+		if(!$this->input->post('conference_start')){return false;}
+		if(!$this->input->post('conference_end')){return false;}
+	}
+
 	function add_conference()
 	{
-		if($this->input->post('conference_title') && $this->input->post('conference_description'))
+		if($this->check_conference_input())
+		{
+			$this->session->set_flashdata()
+		}
 	}
 }
 ?>

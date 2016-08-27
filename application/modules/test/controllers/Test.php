@@ -12,10 +12,7 @@ class Test extends MX_Controller
 
 	function index()
 	{
-		//echo 'test1';
-		//print_r($this->test_model->matata());
-		$data['batat'] = 'hello bitches';
-		$this->load->view('view1', $data);
+		$this->load->view('conference2.php');
 	}
 }
 ?>

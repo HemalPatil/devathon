@@ -1,4 +1,3 @@
-<?php //echo $batat; ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -93,6 +92,30 @@
 						</li>
 					</ul>
 				</aside>
+				<section>
+					<div class="container">
+						<div class="row">
+							<div class="col s12 m6 l4">
+								<p>Hello world</p>
+							</div>
+							<div class="col s12 m6 l4">
+								<p>Hello world</p>
+							</div>
+							<div class="col s12 m6 l4">
+								<p>Hello world</p>
+							</div>
+							<div class="col s12 m6 l4">
+								<p>Hello world</p>
+							</div>
+							<div class="col s12 m6 l4">
+								<p>Hello world</p>
+							</div>
+							<div class="col s12 m6 l4">
+								<p>Hello world</p>
+							</div>
+						</div>
+					</div>
+				</section>
 			</div>
 		</div>
 		

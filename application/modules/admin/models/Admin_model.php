@@ -13,24 +13,28 @@ class Admin_model extends CI_Model
 		return $all_conferences->result_array();
 	}
 
-	function get_all_contents()
+	function get_managers($conference_id)
 	{
-		$all_contents = $this->db->query("SELECT * FROM contents");
-		return $all_contents->result_array();
+		$managers = $this->db->query("SELECT * FROM users WHERE id=(SELECT userid FROM managers_list WHERE conference_id=$conference_id)");
+		return $managers->result_array();
 	}
 
-	function get_all_pages()
+	function get_papers($conference_id)
 	{
-		$all_pages = $this->db->query("SELECT * FROM pages");
-		return $all_pages->result_array();
+		$papers = $this->db->query("SELECT * FROM papers");
+		return $papers->result_array();
 	}
 
+	function get_userdata()
+	{
+		$id=$this->ionauth->user()->row()->id;
+		$userdata = $this->db->query("SELECT * FROM users WHERE id=$id");
+	}
+	
 	function get_all_papers()
 	{
 		$all_papers = $this->db->query("SELECT * FROM papers");
 		return $all_papers->result_array();
 	}
-
-	function get_managers()
 }
 ?>

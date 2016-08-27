@@ -16,9 +16,9 @@ class Test extends MX_Controller
 		$this->load->view('view1');
 	}
 
-	function f1()
+	function view2()
 	{
-		echo 'Hello WSDC';
+		$this->load->view('view2');
 	}
 }
 ?>

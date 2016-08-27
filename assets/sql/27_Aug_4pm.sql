@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2016 at 11:42 AM
+-- Generation Time: Aug 27, 2016 at 12:24 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `conferences` (
   `conference_id` int(10) NOT NULL,
   `title` varchar(100) NOT NULL,
+  `urlname` varchar(100) NOT NULL,
   `description` text NOT NULL,
   `start_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `end_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',

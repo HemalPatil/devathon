@@ -37,10 +37,9 @@ class Admin_model extends CI_Model
 		return $papers->result_array();
 	}
 
-	function get_userdata()
+	function get_userdata($id)
 	{
-		$id=$this->ion_auth->user()->row()->id;
-		$userdata = $this->db->query("SELECT * FROM users WHERE id=$id");
+		return $this->db->query("SELECT * FROM users WHERE id=$id")->row_array();
 	}
 
 	function get_all_papers()
@@ -60,19 +59,27 @@ class Admin_model extends CI_Model
 		$managers = array();
 		$index = 0;
 		$manager_array = $this->input->post('conference_managers');
-		foreach($)
-		return $conference;
+		foreach($manager_array as $manager)
+		{
+			$managers[$index] = $manager;
+			$index++;
+		}
+		return array(0=>$conference, 1=>$managers);
 	}
 
 	function add_conference()
 	{
-		$conference = $this->get_conference_input();
-		$this->db->insert('conferences', $conference);
-		$link = $conference['urlname'];
+		$data = $this->get_conference_input();
+		$this->db->insert('conferences', $data[0]);
+		$link = $data[0]['urlname'];
 		$q = "SELECT * FROM conferences WHERE urlname='$link'";
 		$results = $this->db->query($q)->result_array();
 		if(count($results) === 1)
 		{
+			foreach($data[1] as $manager)
+			{
+				$this->db->insert('managers_list', array('conference_id'=>$results[0]['conference_id'], 'userid'=>$manager));
+			}
 			return array(0=>true,1=>$results[0]['conference_id']);
 		}
 		else

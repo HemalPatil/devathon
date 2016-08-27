@@ -5,7 +5,13 @@ class Main extends CI_Controller
 {
 	public function index()
 	{
-		redirect('/auth/login', 'refresh');
+		$this->all_conferences();
+		$this->load->model('managers')
+	}
+
+	function all_conferences()
+	{
+		$this->load->view()
 	}
 }
 ?>

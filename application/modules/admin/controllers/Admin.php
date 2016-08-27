@@ -23,24 +23,21 @@ class Admin extends MX_Controller
 		$this->load->view('footer', $data);
 	}
 
-	function add_content()
+	function check_conference_input()
 	{
-		if($this->input->post('content_title') && $this->input->post('content'))
-		{
-			$this->admin_model->add_content($this->input->post('content_title'), $this->input->post('content'));
-			$this->session->set_flashdata('content_added', true);
-			redirect('admin/add_content');
-		}
-		if(null !== $this->session->flashdata('content_added'))
-		{
-			$data['content_added'] = $this->session->flashdata('content_added');
-		}
-		$this->render_page('add_content', $data);
+		if(!$this->input->post('conference_title')){return false;}
+		if(!$this->input->post('conference_description')){return false;}
+		if(!$this->input->post('conference_url')){return false;}
+		if(!$this->input->post('conference_start')){return false;}
+		if(!$this->input->post('conference_end')){return false;}
 	}
 
-	function add_page()
+	function add_conference()
 	{
-		
+		if($this->check_conference_input())
+		{
+			$this->session->set_flashdata()
+		}
 	}
 }
 ?>

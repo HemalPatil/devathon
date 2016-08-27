@@ -16,9 +16,9 @@ class Test extends MX_Controller
 		$this->load->view('view1');
 	}
 
-	function modify_conference()
+	function login()
 	{
-		$this->load->view('modify_conference');
+		$this->load->view('login');
 	}
 }
 ?>

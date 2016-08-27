@@ -19,12 +19,6 @@ class Admin_model extends CI_Model
 		return $this->db->query($q)->result_array();
 	}
 
-	function get_conference($id)
-	{
-		$q = "SELECT * FROM conferences WHERE conference_id=$id";
-		return $this->db->query($q)->row_array();
-	}
-
 	function get_managers($conference_id)
 	{
 		$managers = $this->db->query("SELECT * FROM users WHERE id IN (SELECT userid FROM managers_list WHERE conference_id=$conference_id)");
@@ -59,12 +53,19 @@ class Admin_model extends CI_Model
 		$managers = array();
 		$index = 0;
 		$manager_array = $this->input->post('conference_managers');
+
 		foreach($manager_array as $manager)
 		{
 			$managers[$index] = $manager;
 			$index++;
 		}
 		return array(0=>$conference, 1=>$managers);
+
+	}
+
+	function get_conference($id){
+		$conference=$this->db->query("SELECT * FROM conferences where conference_id=$id");
+		return $conference->row_array();
 	}
 
 	function add_conference()

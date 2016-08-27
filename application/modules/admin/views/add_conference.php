@@ -34,12 +34,46 @@
 					<label for="conference_end">Conference End</label>
 				</div>
 			</div>
+			<div class="row">
+				<div class="col s12 m12 l12 center">
+					<h5>Managers</h5>
+				</div>
+			</div>
+			<?php $index = 1; ?>
+			<div class="row">
+				<?php foreach($users as $user){ ?>
+					<div class="col s6 m6 l6">
+						<input id="user<?php echo $index; ?>" type="checkbox" class="filled-in" name="conference_managers[]" value="<?php echo $user['id']; ?>">
+						<label for="user<?php echo $index; ?>"><?php echo $user['first_name'].' '.$user['last_name']; ?></label>
+					</div>
+				<?php $index++;} ?>
+			</div>
 			<div class="row center">
 				<button type="Submit" class="btn">Add Conference</button>
 			</div>
 		</form>
 	</div>
 </div>
+<?php if(isset($conference_added)){ ?>
+<div class="modal center" id="added_banner">
+	<div class="modal-content">
+		<div class="row center">
+			<h5>Conference <?php if(!$conference_added){echo 'not ';} ?> added</h5>
+		</div>
+		<?php if($conference_added){ ?>
+		<form action="<?php echo base_url('admin/modify_conference'); ?>" method="post">
+			<input type="hidden" value="<?php echo $modify_id; ?>" name="modify_id">
+			<div class="row center">
+				<button type="submit" class="btn">Assign Managers</button>
+			</div>
+		</form>
+		<?php } ?>
+	</div>
+</div>
+<script type="text/javascript">
+	$("#added_banner").openModal();
+</script>
+<?php } ?>
 <script type="text/javascript">
 	function checkDates()
 	{

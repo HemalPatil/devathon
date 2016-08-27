@@ -101,50 +101,55 @@
 					<div class="container">
 						<div class="row">
 						<div class="row">
-         <form class="col s12">
-         <div class="row"></div>
-         <div class="row"></div>
-            <div class="row">
-               <div class="input-field col s10 l6 m8 offset-l2 offest-m2">
-                 
-                  <input id="paper_title" name="paper_title" type="text" class="active validate" required>
-                  <label for="paper_title">Title</label>
-               </div>
-
-            </div>
+         <form class="col s12"  action="papertest" method="post">
+         	<h3 style="text-align:center;color:blue;"><u>USER FORM</u></h3>
+         	<div class="row"></div>
+         	<div class="row"></div>
+            
       
-            <div class="row ">
-               <div class="input-field col s10 l6 m8 offset-l2 offset-m2">
-			      <i class="material-icons prefix">mode_edit</i>
-                  <textarea id="paper_description" name="paper_description" class="materialize-textarea centered"></textarea>
-                  <label for="paper_description">DESCRIPTION</label>
+            <div class="row">
+               <div class="input-field col s4 offset-l1" >
+                  <textarea id="first_name" name="first_name" class="materialize-textarea centered " required></textarea>
+                  <label for="first_name">FIRST NAME *</label>
                </div>
-            </div>			   
-         </form> 
-        </div>
-       <div class="row">
-       </div>
-       <div class="row">
-       </div>
-       <div class="row">
-       </div>
-          <form action="#">
-          <div class="row"></div>
-    <div class="col file-field input-field s10 l6 m8 offset-l2 offest-m2">
-      <div class="btn blue" name="files">
-        <span>File</span>
-        <input type="file">
-      </div>
-      <div class="file-path-wrapper ">
-        <input class="file-path validate" type="text">
-      </div>
-    </div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row center"></div>
-    <button class="btn waves-effect waves-light blue right" type="submit" name="action" >Submit
-    <i class="material-icons right offset-l10">send</i>
-  </button>
+               <div class="input-field col s4 offset-l1">
+                  <textarea id="last_name" name="last_name" class="materialize-textarea centered" required></textarea>
+                  <label for="last_name">LAST NAME *</label>
+               </div>
+            </div>
+	
+            <div class="row">
+        		<div class="input-field col s4 offset-l1" >
+          			<i class="material-icons prefix">account_circle</i>
+          			<input id="user_name" type="text" class="validate" required>
+          			<label for="user_ name">USER NAME *</label>
+        		</div>
+        		<div class="input-field col s4 offset-l1">
+          			<input id="password" type="password" class="validate" required>
+          			<label for="password">PASSWORD *</label>
+        		</div>
+
+      		</div>	 
+      		<div class="row">
+      			<div class="input-field col s8 offset-l1">
+          				<input id="email" type="text" class="validate">
+          				<label for="email">EMAIL</label>
+        		</div>
+      		</div>  
+ 
+       		<div class="row">
+       			<div class="input-field col s8 offset-l1">
+          			<i class="material-icons prefix">phone</i>
+          			<input id="telephone" type="tel" class="validate" maxlength="10">
+          			<label for="telephone">Telephone</label>
+        		</div>
+       		</div>
+
+      
+    
+    	<button class="btn waves-effect waves-light blue right" type="submit" name="action" >Submit
+    	<i class="material-icons right offset-l10">send</i>
+  		</button>
 
   </form>
 

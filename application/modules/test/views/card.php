@@ -98,63 +98,141 @@
 					</ul>
 				</aside>
 				<section>
-					<div class="container">
-						<div class="row">
-						<div class="row">
-         <form class="col s12">
-         <div class="row"></div>
-         <div class="row"></div>
-            <div class="row">
+
+
+
+
+				<h3 style="text-align:center;color:blue;">CONFERENCE MANAGER</h3>
+				 <div class="container">
+            
+                <div class="col">
+                    <div class="card-panel  lime darken-4"> 
+
+                    	<div class="row">
                <div class="input-field col s10 l6 m8 offset-l2 offest-m2">
                  
-                  <input id="paper_title" name="paper_title" type="text" class="active validate" required>
+                  <input id="paper_title " name="paper_title" type="text" class="active validate " required>
                   <label for="paper_title">Title</label>
                </div>
 
             </div>
-      
             <div class="row ">
                <div class="input-field col s10 l6 m8 offset-l2 offset-m2">
 			      <i class="material-icons prefix">mode_edit</i>
                   <textarea id="paper_description" name="paper_description" class="materialize-textarea centered"></textarea>
                   <label for="paper_description">DESCRIPTION</label>
                </div>
-            </div>			   
-         </form> 
+            </div>			
+
+            <div class="row ">
+               <div class="input-field col s10 l6 m8 offset-l2 offset-m2">
+                  <textarea id="paper_description" name="url" class="materialize-textarea centered"></textarea>
+                  <label for="url">URL</label>
+               </div>
+            </div>			
+            	<a class="waves-effect waves-light btn blue " >APPROVE</a>
+            	<a class="waves-effect waves-light btn blue " >REJECT</a>
+
+
+                    </div>
+                
+                
+            <div class="col">
+                    <div class="card-panel grey darken-2"> 
+                    <div class="row">
+               <div class="input-field col s10 l6 m8 offset-l2 offest-m2">
+                 
+                  <input id="paper_title " name="paper_title" type="text" class="active validate " required>
+                  <label for="paper_title">Title</label>
+               </div>
+
+            </div>
+            <div class="row ">
+               <div class="input-field col s10 l6 m8 offset-l2 offset-m2">
+			      <i class="material-icons prefix">mode_edit</i>
+                  <textarea id="paper_description" name="paper_description" class="materialize-textarea centered"></textarea>
+                  <label for="paper_description">DESCRIPTION</label>
+               </div>
+            </div>			
+
+            <div class="row ">
+               <div class="input-field col s10 l6 m8 offset-l2 offset-m2">
+                  <textarea id="paper_description" name="url" class="materialize-textarea centered"></textarea>
+                  <label for="url">URL</label>
+               </div>
+            </div>			
+            	<a class="waves-effect waves-light btn blue " >APPROVE</a>
+            	<a class="waves-effect waves-light btn blue " >REJECT</a>
+
+
+                    </div>
+            </div>
+
+            <div class="col">
+                    <div class="card-panel green lighten-3"> 
+                    <div class="row">
+               <div class="input-field col s10 l6 m8 offset-l2 offest-m2">
+                 
+                  <input id="paper_title " name="paper_title" type="text" class="active validate " required>
+                  <label for="paper_title">Title</label>
+               </div>
+
+            </div>
+            <div class="row ">
+               <div class="input-field col s10 l6 m8 offset-l2 offset-m2">
+			      <i class="material-icons prefix">mode_edit</i>
+                  <textarea id="paper_description" name="paper_description" class="materialize-textarea centered"></textarea>
+                  <label for="paper_description">DESCRIPTION</label>
+               </div>
+            </div>			
+
+            <div class="row ">
+               <div class="input-field col s10 l6 m8 offset-l2 offset-m2">
+                  <textarea id="paper_description" name="url" class="materialize-textarea centered"></textarea>
+                  <label for="url">URL</label>
+               </div>
+            </div>			
+            	<a class="waves-effect waves-light btn blue " >APPROVE</a>
+            	<a class="waves-effect waves-light btn blue " >REJECT</a>
+
+
+                    </div>
+                    <div class="col">
+                    <div class="card-panel teal darken-3 "> 
+                    <div class="row">
+               <div class="input-field col s10 l6 m8 offset-l2 offest-m2">
+                 
+                  <input id="paper_title " name="paper_title" type="text" class="active validate " required>
+                  <label for="paper_title">Title</label>
+               </div>
+
+            </div>
+            <div class="row ">
+               <div class="input-field col s10 l6 m8 offset-l2 offset-m2">
+			      <i class="material-icons prefix">mode_edit</i>
+                  <textarea id="paper_description" name="paper_description" class="materialize-textarea centered"></textarea>
+                  <label for="paper_description">DESCRIPTION</label>
+               </div>
+            </div>			
+
+            <div class="row ">
+               <div class="input-field col s10 l6 m8 offset-l2 offset-m2">
+                  <textarea id="paper_description" name="url" class="materialize-textarea centered"></textarea>
+                  <label for="url">URL</label>
+               </div>
+            </div>			
+            	<a class="waves-effect waves-light btn blue " >APPROVE</a>
+            	<a class="waves-effect waves-light btn blue " >REJECT</a>
+
+
+                    </div>
+        
         </div>
-       <div class="row">
-       </div>
-       <div class="row">
-       </div>
-       <div class="row">
-       </div>
-          <form action="#">
-          <div class="row"></div>
-    <div class="col file-field input-field s10 l6 m8 offset-l2 offest-m2">
-      <div class="btn blue" name="files">
-        <span>File</span>
-        <input type="file">
-      </div>
-      <div class="file-path-wrapper ">
-        <input class="file-path validate" type="text">
-      </div>
-    </div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row center"></div>
-    <button class="btn waves-effect waves-light blue right" type="submit" name="action" >Submit
-    <i class="material-icons right offset-l10">send</i>
-  </button>
-
-  </form>
+       
 
 
-							
-							
-						</div>
 
-					</div>
-					
+
 				</section>
 			</div>
 		</div>

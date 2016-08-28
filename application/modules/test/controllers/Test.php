@@ -27,5 +27,13 @@ class Test extends MX_Controller
 	{
 		$this->load->view('user');
 	}
+	function dynamic()
+	{
+		$this->load->view('sample');
+	}
+	function card()
+	{
+		$this->load->view('card');
+	}
 }
 ?>

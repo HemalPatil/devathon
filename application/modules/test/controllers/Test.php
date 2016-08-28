@@ -23,5 +23,9 @@ class Test extends MX_Controller
 	{
 		$this->load->view('add_conference');
 	}
+	function login_form()
+	{
+		$this->load->view('user');
+	}
 }
 ?>

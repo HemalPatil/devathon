@@ -19,9 +19,15 @@ class Admin_model extends CI_Model
 		return $this->db->query($q)->result_array();
 	}
 
+	function get_all_managers()
+	{
+		$managers = $this->db->query("SELECT * FROM users where id in (select user_id from users_groups where group_id=2)");
+		return $managers->result_array();
+	}
+
 	function get_managers($conference_id)
 	{
-		$managers = $this->db->query("SELECT * FROM users WHERE id IN (SELECT userid FROM managers_list WHERE conference_id=$conference_id)");
+		$managers = $this->db->query("SELECT * FROM users WHERE id IN (SELECT user_id FROM managers_list WHERE conference_id=$conference_id)");
 		return $managers->result_array();
 	}
 

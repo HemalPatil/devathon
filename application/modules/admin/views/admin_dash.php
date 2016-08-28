@@ -131,7 +131,7 @@
 										<li><a href="<?php echo base_url('admin/create_user')?>" class="waves-effect waves-cyan">
 											<i class="mdi-social-person-add"></i>Create User</a>
 										</li>
-										<li><a href="<?php echo base_url('auth/manageuser')?>" class="waves-effect waves-cyan">
+										<li><a href="<?php echo base_url('admin/edit_user')?>" class="waves-effect waves-cyan">
 											<i class="mdi-action-settings"></i>Edit User</a>
 										</li>
 										<li><a href="<?php echo base_url('/admin/upload_stud_list_view')?>" class="waves-effect waves-cyan">

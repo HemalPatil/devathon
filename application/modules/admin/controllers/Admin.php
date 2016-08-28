@@ -50,9 +50,6 @@ class Admin extends MX_Controller
 		$data = array();
 		if($this->check_conference_input())
 		{
-			/*$s = $this->admin_model->get_conference_input();
-			print_r($s);
-			return;*/
 			$success = $this->admin_model->add_conference();
 			$this->session->set_flashdata('conference_added', $success[0]);
 			if($success[0])
@@ -69,7 +66,7 @@ class Admin extends MX_Controller
 		{
 			$data['modify_id'] = $this->session->flashdata('modify_id');
 		}
-		$data['users'] = $this->admin_model->get_all_users();
+		$data['users'] = $this->admin_model->get_all_managers();
 		$this->render_page('add_conference', $data);
 	}
 
@@ -117,6 +114,12 @@ class Admin extends MX_Controller
 		$data['mobile']=$this->input->post('mobile');
 		$id = $this->admin_model->create_single_user($data);
 		echo 'User created'.$id.'done';
+	}
+
+	function edit_user()
+	{
+		$data['users'] = $this->db->query("SELECT * FROM users ORDER BY first_name")->result_array();
+		$this->render_page('edit_user', $data);
 	}
 
 	function lolz()

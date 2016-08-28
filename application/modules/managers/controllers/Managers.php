@@ -13,7 +13,9 @@ class Managers extends MX_Controller
 
 	function index()
 	{
-		//TODO : make some home page
+		$data['user'] = $this->users_model->get_userdata($this->ion_auth->user()->row()->id);
+		$this->load->view('managers_dash', $data);
+		$this->load->view('footer', $data);
 	}
 
 	function render_page($page, $data)
@@ -42,14 +44,18 @@ class Managers extends MX_Controller
 
 	function add_page()
 	{
-		$data = array();
-		if($this->input->post('page_title') && $this->input->post('page_description'))
+		$id=$this->ion_auth->user()->row()->id;
+		$data['my_conferences'] = $this->managers_model->get_my_conferences();
+		$data['editors'] = $this->managers_model->get_all_editors();
+		if($this->input->post('page_title') && $this->input->post('page_description') && $this->input->post('page_conference'))
 		{
 			$page['title'] = $this->input->post('page_title');
 			$page['description'] = $this->input->post('page_description');
+			$page['conference_id']=$this->input->post('page_conference');
 			$page['last_edited_by'] = $this->ion_auth->user()->row()->id;
 			$this->managers_model->add_page($page);
 			$this->session->set_flashdata('page_added', true);
+			redirect('managers/add_page');
 		}
 		if(null !== $this->session->flashdata('page_added'))
 		{
@@ -57,5 +63,6 @@ class Managers extends MX_Controller
 		}
 		$this->render_page('add_page', $data);
 	}
+
 }
 ?>

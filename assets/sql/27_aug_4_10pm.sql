@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2016 at 07:30 AM
+-- Generation Time: Aug 27, 2016 at 12:38 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -23,6 +23,37 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `conferences`
+--
+
+CREATE TABLE `conferences` (
+  `conference_id` int(10) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `urlname` varchar(100) NOT NULL,
+  `description` text NOT NULL,
+  `start_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `end_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `last_edited_by` int(10) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `content`
+--
+
+CREATE TABLE `content` (
+  `content_id` int(10) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `content_filename` varchar(100) NOT NULL,
+  `last_edited_by` int(10) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `groups`
 --
 
@@ -38,7 +69,9 @@ CREATE TABLE `groups` (
 
 INSERT INTO `groups` (`id`, `name`, `description`) VALUES
 (1, 'admin', 'Administrator'),
-(2, 'members', 'General User');
+(2, 'managers', 'Conference Manager'),
+(3, 'editor', 'Conference Editor'),
+(4, 'user', 'Conference User');
 
 -- --------------------------------------------------------
 
@@ -52,6 +85,61 @@ CREATE TABLE `login_attempts` (
   `login` varchar(100) NOT NULL,
   `time` int(11) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `managers_list`
+--
+
+CREATE TABLE `managers_list` (
+  `conference_id` int(10) NOT NULL,
+  `userid` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pages`
+--
+
+CREATE TABLE `pages` (
+  `page_id` int(10) NOT NULL,
+  `conference_id` int(10) DEFAULT NULL,
+  `title` varchar(100) NOT NULL,
+  `description` text NOT NULL,
+  `last_edited_by` int(10) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pages_contents`
+--
+
+CREATE TABLE `pages_contents` (
+  `content_id` int(10) NOT NULL,
+  `page_id` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `papers`
+--
+
+CREATE TABLE `papers` (
+  `paper_id` int(10) NOT NULL,
+  `conference_id` int(10) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `description` text NOT NULL,
+  `filename` varchar(50) NOT NULL,
+  `approved` int(1) NOT NULL COMMENT '1=approved 0=pending 2=rejected',
+  `submittedby` int(10) NOT NULL,
+  `approvedby` int(10) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -104,11 +192,25 @@ CREATE TABLE `users_groups` (
 
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 (1, 1, 1),
-(2, 1, 2);
+(2, 1, 2),
+(3, 1, 3),
+(4, 1, 4);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `conferences`
+--
+ALTER TABLE `conferences`
+  ADD PRIMARY KEY (`conference_id`);
+
+--
+-- Indexes for table `content`
+--
+ALTER TABLE `content`
+  ADD PRIMARY KEY (`content_id`);
 
 --
 -- Indexes for table `groups`
@@ -121,6 +223,18 @@ ALTER TABLE `groups`
 --
 ALTER TABLE `login_attempts`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pages`
+--
+ALTER TABLE `pages`
+  ADD PRIMARY KEY (`page_id`);
+
+--
+-- Indexes for table `papers`
+--
+ALTER TABLE `papers`
+  ADD PRIMARY KEY (`paper_id`);
 
 --
 -- Indexes for table `users`
@@ -142,15 +256,35 @@ ALTER TABLE `users_groups`
 --
 
 --
+-- AUTO_INCREMENT for table `conferences`
+--
+ALTER TABLE `conferences`
+  MODIFY `conference_id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `content`
+--
+ALTER TABLE `content`
+  MODIFY `content_id` int(10) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `pages`
+--
+ALTER TABLE `pages`
+  MODIFY `page_id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `papers`
+--
+ALTER TABLE `papers`
+  MODIFY `paper_id` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users`
 --
@@ -160,7 +294,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users_groups`
 --
 ALTER TABLE `users_groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Constraints for dumped tables
 --

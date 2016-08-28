@@ -12,10 +12,16 @@ class Test extends MX_Controller
 
 	function index()
 	{
-		//echo 'test1';
-		//print_r($this->test_model->matata());
-		$data['batat'] = 'hello bitches';
-		$this->load->view('view1', $data);
+		$this->load->view('view1');
+	}
+
+	function papertest()
+	{
+		$this->load->view('paper');
+	}
+	function add_conference()
+	{
+		$this->load->view('add_conference');
 	}
 }
 ?>

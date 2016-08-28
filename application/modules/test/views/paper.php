@@ -102,6 +102,7 @@
 						<div class="row">
 						<div class="row">
          <form class="col s12">
+         <h3 style="text-align:center;color:blue;"><u>PAPER DESCRIPTION</u></h3>
          <div class="row"></div>
          <div class="row"></div>
             <div class="row">

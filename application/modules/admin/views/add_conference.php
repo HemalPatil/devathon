@@ -60,14 +60,6 @@
 		<div class="row center">
 			<h5>Conference <?php if(!$conference_added){echo 'not ';} ?> added</h5>
 		</div>
-		<?php if($conference_added){ ?>
-		<form action="<?php echo base_url('admin/modify_conference'); ?>" method="post">
-			<input type="hidden" value="<?php echo $modify_id; ?>" name="modify_id">
-			<div class="row center">
-				<button type="submit" class="btn">Assign Managers</button>
-			</div>
-		</form>
-		<?php } ?>
 	</div>
 </div>
 <script type="text/javascript">

@@ -12,8 +12,7 @@ class Test extends MX_Controller
 
 	function index()
 	{
-<<<<<<< HEAD
-		$this->load->view('view1');
+		$this->load->view('conference1');
 	}
 
 	function papertest()
@@ -35,7 +34,6 @@ class Test extends MX_Controller
 	function card()
 	{
 		$this->load->view('card');
-=======
 		$this->load->view('conference.php');
 		$this->load->view('view1');
 	}
@@ -43,7 +41,6 @@ class Test extends MX_Controller
 	function login()
 	{
 		$this->load->view('login');
->>>>>>> dd57c7adc67232b62c9f5ab6b6591cc3d30fbcec
 	}
 }
 ?>

@@ -61,24 +61,5 @@
 			</nav>
 		</div>
 	</header>
-	<div id="main">
-		<div class="wrapper">
-			<aside id="left-sidebar-nav">
-				<ul id="slide-out" class="side-nav fixed leftside-navigation">
-					<li class="bold active"><a href="<?php echo base_url('/managers')?>" class="waves-effect waves-cyan"><i class="mdi-action-home"></i>Home</a>
-					</li>
-					<li class="bold"><a href="<?php echo base_url('/managers/my_conferences') ?>" class="waves-effect waves-cyan"><i class="mdi-action-assignment-ind"></i>My Conferences</a>
-					</li>
-					<li class="bold"><a href="<?php echo base_url('/managers/add_page') ?>" class="waves-effect waves-cyan"><i class="mdi-action-assignment-ind"></i>Add Page</a>
-					</li>
-					<li class="bold"><a href="<?php echo base_url('/managers/add_content') ?>" class="waves-effect waves-cyan"><i class="mdi-action-assignment-ind"></i>Add Content</a>
-					</li>
-					<li class="bold"><a href="<?php echo base_url('/managers/edit_pages') ?>" class="waves-effect waves-cyan"><i class="mdi-action-assignment-ind"></i>Edit Pages</a>
-					</li>
-					<li class="bold"><a href="<?php echo base_url('/managers/assign_content') ?>" class="waves-effect waves-cyan"><i class="mdi-action-assignment-ind"></i>Assign Content to Pages</a>
-					</li>
-				</ul>
-				<a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
-			</aside>
-			<section>
-				<div class="container">
+	<section>
+		<div class="container">

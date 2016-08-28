@@ -34,7 +34,7 @@
 <div class="modal center" id="added_banner">
 	<div class="modal-content">
 		<div class="row center">
-			<h5>Content <?php if(!$conference_added){echo 'not ';} ?> added</h5>
+			<h5>Content <?php if(!$content_added){echo 'not ';} ?> added</h5>
 		</div>
 	</div>
 </div>
